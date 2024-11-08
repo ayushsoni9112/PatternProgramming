@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Pattern25 {
+public class Pattern41 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter a number:- ");
@@ -12,21 +12,23 @@ public class Pattern25 {
         sc.close();
     }
     public static void createPattern(int n) {
-        int spaceOne = 0;
-        int spaceTwo = 3;
-        for (int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if (i == n/2 && j == n/2) {
+        int s_star = 1;
+        int e_star = n-1;
+        for(int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j < s_star || j >= e_star)
                     System.out.print("*  ");
-                } else if (i == n/2) {
-                    System.out.print("A  ");
-                } else if (j == n/2) {
-                    System.out.print("B  ");
-                } else {
+                else
                     System.out.print("   ");
-                }
             }
             System.out.println();
+            if (i < n/2) {
+                s_star++;
+                e_star--;
+            } else {
+                s_star--;
+                e_star++;
+            }
         }
     }
 }
